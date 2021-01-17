@@ -115,11 +115,14 @@ int main(int argc, char *argv[]) {
 		pthread_create(&tid[i], NULL, treasure, (void *)&argu[i]);
 	}
 	for (int i = 0; i < M; i++) pthread_join(tid[i], NULL);
+	FILE *pt;
+	pt = fopen(argv[5],"w");
+
 	for (int i = 0; i < M; i++) {
 		for (int j = 0; j < N; j++) {
-			printf("%s\n",ans[i][j]);
+			fprintf(pt,"%s\n",ans[i][j]);
 		}
-		printf("===\n");
+		fprintf(pt,"===\n");
 	}
 	return 0;
 }
